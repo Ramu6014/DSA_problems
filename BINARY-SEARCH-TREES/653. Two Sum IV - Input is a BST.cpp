@@ -15,18 +15,11 @@
  */
 class Solution {
 public:
-    void inorder(TreeNode*root,unordered_map<int,int>&freq){
-        if(root==NULL){
-            return;
-        }
-        inorder(root->left,freq);
-        freq[root->val]++;
-        inorder(root->right,freq);
-    }
     bool validate(TreeNode*root,unordered_map<int,int>&freq,int  k){
         if(root==NULL){
             return false;
         }
+        freq[root->val]++;
         int x=k-root->val;
         if(x!=root->val && freq.find(x)!=freq.end()){
             return true;
@@ -38,7 +31,6 @@ public:
     }
     bool findTarget(TreeNode* root, int k) {
         unordered_map<int,int>freq;
-        inorder(root,freq);
         return validate(root,freq,k);
     }
 };
