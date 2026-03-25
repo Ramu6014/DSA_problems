@@ -34,3 +34,73 @@ public:
         return validate(root,freq,k);
     }
 };
+
+//OPTIMAL APPROACH CODE
+//TimeComplexity: O(n)
+//SpaceComplexity: O(H)
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+ class BSTIterator{
+ public:
+    stack<TreeNode*>st;
+    //false---next()
+    //true---before()
+    bool reverse;
+        BSTIterator(TreeNode*root,bool isReverse){
+            reverse=isReverse;
+            pushAll(root,reverse);
+        }
+        int next(){
+            TreeNode*node=st.top();
+            st.pop();
+            if(reverse==false){
+                pushAll(node->right,reverse);
+            }
+            else{
+                pushAll(node->left,reverse);
+            }
+            return node->val;
+        }
+        void pushAll(TreeNode*node,bool reverse){
+            while(node){
+                st.push(node);
+                if(reverse==false){
+                    node=node->left;
+                }
+                else{
+                    node=node->right;
+                }
+            }
+            return;
+        }
+    };
+class Solution {
+public:
+    bool findTarget(TreeNode* root, int k) {
+        BSTIterator l(root,false);
+        BSTIterator r(root,true);
+        int i=l.next();
+        int j=r.next();
+        while(i<j){
+            if(i+j==k){
+                return true;
+            }
+            else if(i+j<k){
+                i=l.next();
+            }
+            else{
+                j=r.next();
+            }
+        }
+        return false;
+    }
+};
