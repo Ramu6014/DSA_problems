@@ -1,6 +1,21 @@
 //problem link: https://www.geeksforgeeks.org/problems/consecutive-1s-not-allowed1912/1
 //timeComplexity: O(2^n)
-//spaceComplexity: O()
+//spaceComplexity: O(n)
+/*
+Problem: Consecutive 1s Not Allowed (GFG)
+
+Status: ❌ TLE (Brute Force)
+Notes File:
+./01-04-2025Notes.md
+
+Open this file to see:
+- TLE screenshot
+- Why brute force failed
+- DP optimization
+
+Reminder:
+Re-solve using DP (Fibonacci pattern)
+*/
 class Solution {
   public:
     void func(int indx,string &s,set<string>&st){
