@@ -1,36 +1,38 @@
 //problem link: https://leetcode.com/problems/string-to-integer-atoi/
 //timeComplexity: O(n)
-//spaceComplexity: O(n)
+//spaceComplexity: O(1)
 
 class Solution {
 public:
-    int helper(int indx,string &s,int ans,int sign){
-        if(indx==s.size() || !(isdigit(s[indx]))){
-            if(sign){
-                return sign*ans;
-            }
-            return  sign*ans;
-        }
-        int digit=s[indx]-'0';
-         if (ans > (INT_MAX - digit) / 10) {
-            return sign == 1 ? INT_MAX : INT_MIN;
-        }
-        ans=ans*10+digit;
-        return helper(indx+1,s,ans,sign);
-    }
-    int func(string &s){
-        int i=0;
-        while(i<s.size() && s[i]==' '){
-            i++;
-        }
-        int sign=1;
-        if(i<s.size() && (s[i]=='+' || s[i]=='-')){
-           sign=(s[i]=='-')?-1:1;
-           i++;
-        }
-        return helper(i,s,0,sign);
-    }
     int myAtoi(string s) {
-        return func(s);
+        bool sign=true;
+        //removeSpace
+        int indx=0;
+        int n=s.size();
+        while(indx<n && s[indx]==' '){
+            indx++;
+        }
+        //signedness
+        if(s[indx]=='-'||s[indx]=='+'){
+            if(s[indx]=='-'){
+                sign=false;
+            }
+            indx++;
+        }
+        //conversion
+        long long sum=0;
+        while(indx<n && isdigit(s[indx])){
+            int x=s[indx]-'0';
+            sum=sum*10+x%10;
+            if(sum>INT_MAX){
+                return sign==true?INT_MAX:INT_MIN;
+            }
+            if(sum<INT_MIN){
+                return sign==true?INT_MAX:INT_MIN;
+            }
+            indx++;
+        }
+        return sign==true?sum:-sum;
     }
 };
+
