@@ -1,5 +1,5 @@
 //problem link: https://leetcode.com/problems/find-greatest-common-divisor-of-array/
-//timeComplexity: O(n)*O(log(min(maxi,mini)))
+//timeComplexity: O(n)+O(log(min(maxi,mini)))
 //spaceComplexity: O(1)
 
 class Solution {
