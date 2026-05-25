@@ -1,6 +1,6 @@
 //problem link: https://leetcode.com/problems/longest-cycle-in-a-graph/
-//timeComplexity: o(V+2E)
-//spaceComplexity: o(V+2E)
+//timeComplexity: o(V+E)
+//spaceComplexity: o(V+E)
 
 class Solution {
     int ans=-1;
