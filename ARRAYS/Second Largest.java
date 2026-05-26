@@ -1,0 +1,22 @@
+//problem link: https://www.geeksforgeeks.org/problems/second-largest3735/1
+//timeComplexity: O(n)
+//spaceComplexity: O(1)
+
+class Solution {
+    public int getSecondLargest(int[] arr) {
+        // code here
+        int n=arr.length;
+        int largest=arr[0];
+        int second=-1;
+        for(int i=0;i<n;i++){
+            if(arr[i]>largest){
+                second=largest;
+                largest=arr[i];
+            }
+            else if(arr[i]>second && arr[i]!=largest){
+                second=arr[i];
+            }
+        }
+        return second;
+    }
+}
