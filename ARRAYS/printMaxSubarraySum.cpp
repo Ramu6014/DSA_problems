@@ -1,7 +1,7 @@
 //problem link: https://leetcode.com/problems/maximum-subarray/description/ 
 //extended version of this above  problem
-//timeComplexity:
-//spaceComplexity:
+//timeComplexity: O(n)
+//spaceComplexity: O(n)
 
 #include<bits/stdc++.h>
 using namespace std;
