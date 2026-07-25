@@ -1,5 +1,5 @@
 //problem link: https://leetcode.com/problems/plus-one/
-//timeComplexity: O(1)
+//timeComplexity: O(n)
 //spaceComplexity: o(1)
 
 class Solution {
