@@ -1,33 +1,14 @@
 //problem link: https://leetcode.com/problems/maximum-product-of-three-numbers/?envType=daily-question&envId=2026-07-26
-//timeComplexity: o(n)
+//timeComplexity: o(nlogn)
 //spaceComplexity: O(1)
 
 class Solution {
 public:
     int maximumProduct(vector<int>& nums) {
         int n=nums.size();
-        if(n<3) return -1;
-        int fmaxi=INT_MIN,smaxi=INT_MIN,tmaxi=INT_MIN;
-        int fmin=INT_MAX,smin=INT_MAX;
-        for(auto x:nums){
-            if(x>fmaxi){
-                tmaxi=smaxi;
-                smaxi=fmaxi;
-                fmaxi=x;
-            }else if(x<=fmaxi && x>smaxi){
-                tmaxi=smaxi;
-                smaxi=x;
-            }else if(x<=smaxi && x<=fmaxi && x>tmaxi){
-                tmaxi=x;
-            }
-
-            if(x<fmin){
-                smin=fmin;
-                fmin=x;
-            }else if(x>=fmin && x<smin){
-                smin=x;
-            }
-        }
-        return max(fmaxi*smaxi*tmaxi,fmaxi*fmin*smin);
+        sort(nums.begin(),nums.end());
+        int small=nums[0];
+        int secondSmall=nums[1];
+        return max(small*secondSmall*nums[n-1],nums[n-1]*nums[n-2]*nums[n-3]);
     }
 };
