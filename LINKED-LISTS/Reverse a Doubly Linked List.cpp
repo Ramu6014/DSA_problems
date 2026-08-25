@@ -1,7 +1,3 @@
-//problem link: https://www.geeksforgeeks.org/problems/reverse-a-doubly-linked-list/1
-//timeComplexity: O(n)
-//spaceComplexity: O(1)
-
 /* Structure of Doubly Linked List Node
 class Node {
   public:
@@ -23,12 +19,10 @@ class Solution {
         // code here
         Node*temp=head;
         Node*last=NULL;
-        Node*nextNode=NULL;
-        Node*prevNode=NULL;
-        while(temp){
-            nextNode=temp->next;
+        while(temp!=NULL){
+            Node*nextNode=temp->next;
+            temp->prev=temp->next;
             temp->next=last;
-            temp->prev=nextNode;
             last=temp;
             temp=nextNode;
         }
