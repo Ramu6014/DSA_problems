@@ -1,5 +1,5 @@
 //problem link: https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/
-//timeComplexity: O(n)
+//timeComplexity: O(nlog(n))
 //spaceComplexity: O(n)
 
 class Solution {
