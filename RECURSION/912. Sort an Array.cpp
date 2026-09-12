@@ -1,6 +1,6 @@
 //problem link: https://leetcode.com/problems/sort-an-array/?envType=problem-list-v2&envId=merge-sort
 //timeComplexity: O(nlog(n))
-//spaceComplexity: O(1)
+//spaceComplexity: O(n)
 
 class Solution {
     void merge(int low,int mid,int high,vector<int>&nums){
